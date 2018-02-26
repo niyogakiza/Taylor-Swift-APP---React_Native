@@ -1,0 +1,79 @@
+React
+=====
+.Knows how a component should behave
+.Knows how to take a bunch of components and make them work together
+
+React Native
+============
+.Knows how to take the output from a component and place it on the screen
+.Provides default core components(image, text)
+
+Albums App
+==========
+Components:
+- Header
+- Card: - CardSection
+        - CardSection
+        - CardSection
+
+*Album structure
+================
+
+.App ======> Header
+     ======> AlbumList
+.Data    ==> AlbumList =====> AlbumDetail
+                       =====> AlbumDetail
+
+
+Render-Tree
+===========
+.App (root) => Header (child)
+=> only the 'root' component uses 'AppRegistry', means the component that we want to show first on the device
+
+React Native Styling
+====================
+.Are non file packages that we can use, so we do all by our selves
+.So we create javascript object to do our styles
+
+class vs function
+=================
+*Functional Component
+----------------------
+.Used for presenting static data
+.Can't handle fetching data
+.Easy to write.
+
+* Class Component
+------------------
+.Used for dynamic sources of data
+.Handles any data that might change(fetching data, user events, etc)
+.Knows when it gets erendered to the device (useful for data fetching)
+.More code to write.
+
+Fetch data time line
+====================
+.React Native boots up
+.RN decides to render 'app' to the screen
+.App decides to renders itself, Header, and albumList
+.AlbumList gets initial state of {albums:[]}
+.AlbumList realises its about to be rendered, calls componentWillMount
+.AlbumList makes HTTP request
+.AlbumList render method is called
+.App, AlbumList, Header appear on the screen
+... HTTP request returns JSON data
+.Request handler calls 'setState'
+.AlbumList's render method is called
+
+Rules of State
+==============
+> Definition of state: a plain javascript object used to record and respond to user-triggered events.
+>When we need to update what a component shows, call 'this.setState'
+>Only change state with 'setState', do not do 'this.state'
+
+Card Header
+===========
+<CardSection>
+    <Image/>
+    <Text/>
+    <Text/>
+</CardSection>
